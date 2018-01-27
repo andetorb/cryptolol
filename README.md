@@ -17,6 +17,8 @@ Usage: coins.sh [-c|-p <cli.fyi|coinmarketcap>]
 * Read currencies from file
 * Output to CSV
 * Choose output parameters
+* Fetch data from different sites
+* Fetch other currencies?
 
 ### Licence
 
