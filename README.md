@@ -21,4 +21,4 @@ Usage: coins.sh [-c|-p <cli.fyi|coinmarketcap>]
 * Fetch other currencies?
 
 ### Licence
-
+BSD simplified, see [LICENSE.md](LICENSE.md).
