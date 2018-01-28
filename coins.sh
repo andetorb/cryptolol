@@ -11,7 +11,7 @@ val=( BTC ETH XMR ZEC IOT)
 value=( bitcoin ethereum zcash)
 
 # Usage message
-usage() { echo "Usage: $0 [-c|-p <cli.fyi|coinmarketcap>]" 1>&2; exit 1; }
+usage() { echo "Usage: $0 [-c|-p|-b <cli.fyi|coinmarketcap|bitmynt>]" 1>&2; exit 1; }
 
 # Catch 0 arguments
 if [[ $1 == "" ]]; 
@@ -44,7 +44,6 @@ while getopts "cpb" OPTION; do
 	buy=$(curl -s http://bitmynt.no/ticker.pl | jq -r '.nok.buy')
 	echo "[bitmynt.no] buys BTC at" $buy "NOK, sells at" $sell "NOK"
 	;;
-
     *)
 	usage
         ;;
