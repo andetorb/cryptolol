@@ -20,7 +20,7 @@ then
 	exit;
 fi
 # check for options -c and -p
-while getopts "cp" OPTION; do
+while getopts "cpb" OPTION; do
     case $OPTION in
     c)
         for i in "${val[@]}"
@@ -32,8 +32,6 @@ while getopts "cp" OPTION; do
     p)
         for i in "${value[@]}"
         do
-                #verdi=$(curl -s https://api.coinmarketcap.com/v1/ticker/"$i"/)
-                #echo $verdi | jq -r '.[0].price_usd, .[0].percent_change_1h ,.[0].percent_change_24h, .[0].percent_change_7d'
                 verdi1=$(curl -s https://api.coinmarketcap.com/v1/ticker/"$i"/ | jq -r '.[0].price_usd')
                 verdi2=$(curl -s https://api.coinmarketcap.com/v1/ticker/"$i"/ | jq -r '.[0].percent_change_1h')
                 verdi3=$(curl -s https://api.coinmarketcap.com/v1/ticker/"$i"/ | jq -r '.[0].percent_change_24h')
@@ -41,6 +39,12 @@ while getopts "cp" OPTION; do
                 echo "["$i"]" "USD:" $verdi1 "1h:" $verdi2 "24h:" $verdi3 "7d:" $verdi4 
         done
         ;;
+    b)  
+	sell=$(curl -s http://bitmynt.no/ticker.pl | jq -r '.nok.sell')
+	buy=$(curl -s http://bitmynt.no/ticker.pl | jq -r '.nok.buy')
+	echo "[bitmynt.no] buys BTC at" $buy "NOK, sells at" $sell "NOK"
+	;;
+
     *)
 	usage
         ;;
