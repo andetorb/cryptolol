@@ -7,9 +7,8 @@ Add it to an alias or put it in ~/home/bin/
 
 
 ```bash
-$ ln -s coins.sh ~/bin/coins.sh 
 $ coins.sh
-Usage: coins.sh [-c|-p|-b <cli.fyi|coinmarketcap|bitmynt>]
+Usage: coins.sh -cpb
 ```
 
 

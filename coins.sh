@@ -8,7 +8,7 @@
 # ETH = Ethereum
 
 val=( BTC ETH XMR ZEC IOT)
-value=( bitcoin ethereum zcash)
+value=( bitcoin ethereum monero zcash iota )
 
 # Usage message
 usage() { echo "Usage: $0 [-c|-p|-b <cli.fyi|coinmarketcap|bitmynt>]" 1>&2; exit 1; }
