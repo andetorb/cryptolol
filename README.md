@@ -18,6 +18,7 @@ Usage: coins.sh -cpb
 * Choose output parameters
 * Fetch data from different sites
 * Fetch other currencies?
+* Port to python, add ASCII-graph
 
 ### Licence
 BSD simplified, see [LICENSE.md](LICENSE.md).
