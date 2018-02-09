@@ -9,6 +9,7 @@
 
 val=( BTC ETH XMR ZEC IOT)
 value=( bitcoin ethereum monero zcash iota )
+currency=( USD EUR NOK )
 
 # Usage message
 usage() { echo "Usage: $0 [-c|-p|-b <cli.fyi|coinmarketcap|bitmynt>]" 1>&2; exit 1; }
@@ -20,13 +21,13 @@ then
 	exit;
 fi
 # check for options -c and -p
-while getopts "cpb" OPTION; do
+while getopts "cpbr" OPTION; do
     case $OPTION in
     c)
         for i in "${val[@]}"
         do
                 verdi=$(curl -s cli.fyi/"$i" | jq '.data."USD ($)"')
-                echo $i "er på" $verdi "usd"
+                echo $i "is at" $verdi "usd"
         done
         ;;
     p)
@@ -43,6 +44,26 @@ while getopts "cpb" OPTION; do
 	sell=$(curl -s http://bitmynt.no/ticker.pl | jq -r '.nok.sell')
 	buy=$(curl -s http://bitmynt.no/ticker.pl | jq -r '.nok.buy')
 	echo "[bitmynt.no] buys BTC at" $buy "NOK, sells at" $sell "NOK"
+	;;
+	
+    r) 
+       case "${currency[@]}" in  *"$2"*) 
+	       if [[ $2 == "" ]];
+	       then
+		       echo "Specify currency"
+       		       echo "${currency[@]}"
+		       break
+	       fi
+	       # Do magic
+	       echo "Found your currency!" 
+	       echo "$2"
+       	       ;; 
+       *)
+       echo "Specify currency"
+       echo "${currency[@]}"
+       ;;
+       esac
+
 	;;
     *)
 	usage
